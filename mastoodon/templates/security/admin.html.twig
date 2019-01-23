@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<nav class="navbar home">
+		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
+		<!--Check access to Back-Office-->
+		{% if user.getIsAdmin() == true %}
+			<a class="main-link" href="{{ path('AdminPage') }}">BACK-OFFICE</a>
+		{% endif %}
+
+		<!--Check number of Ballots in order to summon-->
+		{% if user.getBallotsNumber() >= 200 %}
+			<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+		{% endif %}
+        <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
+        <div class="profil">
+            <p>
+                <strong>{{ user.getSurname() }} {{ user.getFirstname() }}</strong><br>
+                {{ user.getRank() }} | {{ user.getBallotsNumber() }} BV
+            </p>
+        </div>
+	</nav>
+
+	<section class="container">
+        <div class="privileges-wrapper">
+            <a href="{{ path('RemoveUser') }}" name="button" type="submit" class="privilege">REMOVE USER</a>
+            <a href="{{ path('GrantUser') }}" name="button" type="submit" class="privilege">GRANT USER</a>
+            <a href="{{ path('CleanCollection') }}" name="button" type="submit" class="privilege">CLEAN COLLECTION</a>
+            <a href="{{ path('AddBV') }}" name="button" type="submit" class="privilege">ADD BV</a>
+        </div>
+	</section>
+
+    <footer>
+		<a href="{{ path('LogOutPage') }}">Log out</a>
+	</footer>
+{% endblock %}

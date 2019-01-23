@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<nav class="navbar home">
+		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
+		<!--Check access to Back-Office-->
+		{% if user.getIsAdmin() == true %}
+			<a class="main-link" href="{{ path('AdminPage') }}">BACK-OFFICE</a>
+		{% endif %}
+
+		<!--Check number of Ballots in order to summon-->
+		{% if user.getBallotsNumber() >= 200 %}
+			<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+		{% endif %}
+        <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
+        <div class="profil">
+            <p>
+                <strong>{{ user.getSurname() }} {{ user.getFirstname() }}</strong><br>
+                {{ user.getRank() }} | {{ user.getBallotsNumber() }} BV
+            </p>
+        </div>
+	</nav>
+
+	<section class="container">
+		<div class="container-summon">
+			<h1>Congratulations, you got {{ card.getName() }} !</h1>
+			<div class="summon"style="background-image: url(assets/img/{{ card.getImage() }})">
+				<span class="card-name-summon">{{ card.getName() }}</span>
+				{% if card.getRarity() == 1 %}
+					<img src="assets/bronze_card.png">
+				{% elseif card.getRarity() == 2 %}
+					<img src="assets/silver_card.png">
+				{% elseif card.getRarity() == 3 %}
+					<img src="assets/gold_card.png">
+				{% else %}
+					<img src="assets/bronze_card.png">
+				{% endif %}
+				
+			</div>
+			<div class="home-buttons">
+				<a href="{{ path('CollectionPage') }}">BACK TO COLLECTION</a>
+			</div>
+		</div>
+	</section>
+	
+	<footer>
+		<a href="{{ path('LogOutPage') }}">Log out</a>
+	</footer>
+{% endblock %}

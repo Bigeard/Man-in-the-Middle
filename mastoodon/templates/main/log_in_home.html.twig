@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<nav class="navbar home">
+		<a class="logo" href="{{ path('LogInHomePage') }}"><img src="assets/logo.png"></a>
+		<!--Check access to Back-Office-->
+		{% if user.getIsAdmin() == true %}
+			<a class="main-link" href="{{ path('AdminPage') }}">BACK-OFFICE</a>
+		{% endif %}
+
+		<!--Check number of Ballots in order to summon-->
+		{% if user.getBallotsNumber() >= 200 %}
+			<a class="main-link" href="{{ path('SummonPage') }}">SUMMON</a>
+		{% endif %}
+        <a class="main-link" href="{{ path('CollectionPage') }}">COLLECTION</a>
+        <div class="profil">
+            <p>
+                <strong>{{ user.getSurname() }} {{ user.getFirstname() }}</strong><br>
+                {{ user.getRank() }} | {{ user.getBallotsNumber() }} BV
+            </p>
+        </div>
+	</nav>
+
+	<section class="container">
+		<div class="container-home">
+			<div class="banner"><img src="assets/banner.png" draggable="false"></div>
+			<div class="home-buttons">
+				{% if user.getBallotsNumber() < 200 %}
+					<span class="disabled">YOU DON'T HAVE 200 BV</span>
+				{% else %}
+					<a href="{{ path('SummonPage') }}">SUMMON A NEW POLITICIAN</a>
+				{% endif %}
+				<a href="{{ path('ClaimBV') }}">CLAIM 200BV</a>
+			</div>
+		</div>
+	</section>
+	
+	<footer>
+		<a href="{{ path('LogOutPage') }}">Log out</a>
+	</footer>
+{% endblock %}

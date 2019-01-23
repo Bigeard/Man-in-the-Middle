@@ -4,7 +4,7 @@ from scapy.all import *
 import sys
 import os
 import time
- 
+
 try:
         interface = input("[*] Enter Desired Interface: ")
         victimIP = input("[*] Enter Victim IP: ")

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<nav class="navbar">
+    <a class="logo" href="{{ path('LogOutHomePage') }}"><img src="assets/logo.png"></a>
+    <a class="main-link" href="{{ path('SignUpPage') }}">SIGN UP</a>
+    <a class="sub-link" href="{{ path('LogInPage') }}">LOG IN</a>
+</nav>
+
+<section class="container">
+	<div class="title">
+		<img src="assets/banner.png" draggable="false">
+		<p>
+			Enter the magic world of french politics !
+		</p>
+
+		<table class="ranking">
+		<tr>
+			<th>Firstname</th>
+			<th>Surname</th>
+			<th>Power</th>
+		</tr>
+		{% for user in users %}
+		<tr>
+			<td>{{ user.getFirstname() }}</td>
+			<td>{{ user.getSurname() }}</td>
+			<td>{{ user.getPower() }}</td>
+		</tr>
+		{% endfor %}
+	</table> 
+	</div>
+
+	
+</section>
+{% endblock %}

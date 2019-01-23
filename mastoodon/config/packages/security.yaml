@@ -1,0 +1,46 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory: { memory: ~ }
+        in_database:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+
+            provider: in_database
+
+            form_login:
+                login_path: LogInPage
+                default_target_path: LogInHomePage
+                failure_path: LogInPage
+                check_path: LogInPage
+
+            logout:
+                path: LogOutPage
+                target: LogOutHomePage
+
+            # activate different ways to authenticate
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/home, roles: ROLE_USER }
+        - { path: ^/logout, roles: ROLE_USER }
+        - { path: ^/summon, roles: ROLE_USER }
+        - { path: ^/collection, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }

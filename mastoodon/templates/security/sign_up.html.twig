@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<nav class="navbar">
+		<a class="logo" href="{{ path('LogOutHomePage') }}"><img src="assets/logo.png"></a>
+		<a class="main-link" href="{{ path('LogInPage') }}">LOG IN</a>
+	</nav>
+
+	<section class="container">
+		<div class="form-container">
+			<p>Sign Up</p>
+
+			{{ form_start(form) }}
+			{{ form_row(form.surname, {'attr' :{'placeholder': 'First Name'}}) }}
+			{{ form_row(form.firstname, {'attr' :{'placeholder': 'Surname'}}) }}
+			{{ form_row(form.email, {'attr' :{'placeholder': 'Email'}}) }}
+			{{ form_row(form.password, {'attr' :{'placeholder': 'Password'}}) }}
+			{{ form_row(form.confirmpassword, {'attr' :{'placeholder': 'Password confirmation'}}) }}
+			<button name="button" type="submit">SIGN UP</button>
+			{{ form_end(form) }}
+
+
+			{# <form id="new_user" action="" accept-charset="UTF-8" method="post">
+				<div class="form-group">
+					<input placeholder="Username" autofocus="autofocus" class="form-control" type="text" name="user[username]" id="user_username">
+					<input placeholder="Email" class="form-control" type="email" value="" name="user[email]" id="user_email">
+					<input placeholder="Password" autocomplete="off" class="form-control" type="password" name="user[password]" id="user_password">
+					<input placeholder="Password Confirmation" autocomplete="off" class="form-control" type="password" name="user[password_confirmation]">
+				</div>
+				<button name="button" type="submit">SIGN UP</button>
+			</form> #}
+
+			<div class="form-footer form-footer_sign-up">
+				<a class="sub-link" href="{{ path('LogInPage') }}">LOG IN</a>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+

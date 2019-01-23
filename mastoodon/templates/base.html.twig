@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="assets/favicon.ico" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>{% block title %}Mastoodon{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% block stylesheets %}
+        <link rel="stylesheet" media="all" href="assets/common.css">
+        <link rel="stylesheet" media="all" href="assets/default.css">
+        {% endblock %}
+    </head>
+    <body class="lighter theme-default no-reduce-motion">
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
