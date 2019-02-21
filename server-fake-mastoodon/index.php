@@ -79,12 +79,12 @@ if(isset($_GET['info'])){$info = $_GET['info'];} else {$info = 0;}
         </form>
         <div class="form-footer">
           <ul class="no-list">
-            <li><a href="https://mingxingsex.com/auth/sign_up">Sign up</a></li>
+            <li><a href="">Sign up</a></li>
             <li>
-              <a href="https://mingxingsex.com/auth/password/new">Forgot your password?</a>
+              <a href="">Forgot your password?</a>
             </li>
             <li>
-              <a href="https://mingxingsex.com/auth/confirmation/new">Didn't receive confirmation instructions?</a>
+              <a href="">Didn't receive confirmation instructions?</a>
             </li>
           </ul>
           <?php 

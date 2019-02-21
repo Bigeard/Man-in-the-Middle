@@ -3,9 +3,9 @@
 
         private static $instance = null;
 
-        const USER = "db105054";
-        const PASSWORD = "a9a2f15ad1f8641bbf1a55a14d020c581ca519ef82ed99ef99af93c1a74f3818";
-        const DNS = 'mysql:host=db343039-aventure.sql-pro.online.net;dbname=db343039_aventure';
+        const USER = "root";
+        const PASSWORD = "nuggets";
+        const DNS = 'mysql:host=localhost;dbname=mastoodon';
 
         public static function startConnection(){
             try{
