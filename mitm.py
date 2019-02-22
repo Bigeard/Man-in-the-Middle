@@ -4,11 +4,11 @@ import time
 from scapy.all import *
 
 class Arp_poison:
-        def __init__(self, interface, victimIP, gateIP):
+        def __init__(self):
                 self.run_poison = True
-                self.interface = interface
-                self.victimIP = victimIP
-                self.gateIP = gateIP
+                self.interface = ""
+                self.victimIP = ""
+                self.gateIP = ""
 
         def enablePoison(self):
                 print("\n[*] Enabling IP Forwarding...\n")
