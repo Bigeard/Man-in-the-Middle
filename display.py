@@ -16,17 +16,27 @@ class Main(QWidget):
         self.victimIP = QLineEdit(self)
         self.victimIP.move(20, 20)
         self.victimIP.resize(100,20)
-        self.victimIP.setPlaceholderText("Victim IP") 
+        self.victimIP.setPlaceholderText("Victim IP")
 
         self.gateIP = QLineEdit(self)
         self.gateIP.move(140, 20)
         self.gateIP.resize(100,20)
-        self.gateIP.setPlaceholderText("Gate IP") 
+        self.gateIP.setPlaceholderText("Gate IP")
         
         self.interface = QLineEdit(self)
         self.interface.move(260, 20)
         self.interface.resize(100,20)
-        self.interface.setPlaceholderText("Interface") 
+        self.interface.setPlaceholderText("Interface")
+
+        self.websiteIP = QLineEdit(self)
+        self.websiteIP.move(20, 100)
+        self.websiteIP.resize(100,20)
+        self.websiteIP.setPlaceholderText("Website IP")
+
+        self.redirectIP = QLineEdit(self)
+        self.redirectIP.move(140, 100)
+        self.redirectIP.resize(100,20)
+        self.redirectIP.setPlaceholderText("Redirect IP")
 
         def showParams():
             print(self.victimIP.text() + " " + self.gateIP.text() + " " + self.interface.text())
@@ -52,8 +62,13 @@ class Main(QWidget):
         stopPoisonBtn.resize(100,20)
         stopPoisonBtn.clicked.connect(arp_poison.disablePoison)
 
+        startRedirectBtn = QPushButton('StartRedirect', self)
+        startRedirectBtn.move(260,100)
+        startRedirectBtn.resize(100,20)
+        startRedirectBtn.clicked.connect(showParams)
+
         exitBtn = QPushButton('Exit', self)
-        exitBtn.move(20, 100)
+        exitBtn.move(20, 140)
         exitBtn.resize(100,20)
         exitBtn.clicked.connect(self.close)
         
