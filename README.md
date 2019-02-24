@@ -127,13 +127,31 @@ Pour ça, il faut ajouter des surcharges d'hôtes et entrer les informations sui
 ![alt text](./IMG-README/dns2.png "DNS2")
 
 <br><br><br>
+------
+## Fonctionnement de l'attaque
+-----
+Cette attaque est composée de 2 parties:
+* L'ARP Spoofing  
+* L'HTTP packet manipulation
+Pour cette partie, nous avons utilisé Scapy, qui est une bibliothèque permettant de manipuler différents packets.
+### ARP spoofing
+
+Le but de l'ARP spoofing est de faire transiter les packets, sur un réseau local, par la machine d'un attaqueur.
+Pour se faire, le hacker va envoyer un message à une machine (ex: alice), en se faisant passer pour le router.
+Ensuite, il va envoyer un message au router, en se faisant passer pour alice.
+Ainsi, tout les packets passerons par la machine du hacker, ce qui lui permettera de pouvoir effectuer différentes actions.
+
+### HTTP packet manipulation
+
+La manipulation des packets HTTP s'effectue en deux étapes, le sniffing, et le sending.
+Le sniffing permet de réceptionner les différents packets passant sur une connexion.
+Grâce à cette étape, nous pouvons filtrer les différents packets, en fonction de leurs types (TCP, ICMP ...), des sources ou destinataires...
+Le sending est le fait d'envoyer des packets. Nous pouvons aussi bien forger des packets de A à Z, où bien réutiliser des données utiles, récupérées au préalable grâce au sniffing. Par exemple, en récupérant un HTTP get, nous pouvons altérer les adresses, ainsi que les différents flag du packet pour effectuer une redirection sur un site.
 
 ------
 ## Conclusion
 ### Comment éviter une attaque man in the middle ?
 ------
-ARP Spoofing  
-HTTP packet manipulation
 
 - Il faut éviter de se connecter sur un réseau public si possible.
 
