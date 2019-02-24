@@ -59,10 +59,10 @@ $ chmod 644 -R /var/www/html/
 $ rm /var/www/html/index.html
 ```
 
-On utilise Filezilla pour le transfert les fichiers d'un ordinateur à un serveur.
+On utilise Filezilla pour le transfert de fichiers d'un ordinateur à un serveur.
 https://filezilla-project.org/
 
-On utilisera du SFTP pour la connexion du coup, il faudra activer le SSH sur le serveur.
+On utilisera du SFTP pour la connexion, il faudra donc penser à activer le SSH sur le serveur.
 
 <br><br><br>
 
@@ -72,11 +72,11 @@ On utilisera du SFTP pour la connexion du coup, il faudra activer le SSH sur le 
 
 Le serveur original est basique. Il y a une page de connexion et une page qui indique que la connexion est réussie.
 
-Et pour le serveur fake on a une page de connexion qui ressemble de très près a la page de connexion de du serveur original sauf que a la place de s'appeler matodon on la appeler mastoodon avec deux "o". On remarque la différence grâce au logo et au nom de domaine.
+Et pour le serveur "fake" on a une page de connexion qui ressemble de très près a la page de connexion de du serveur original sauf qu'à la place de s'appeler mastodon, nous l'avons appelé mastoodon avec deux "o". On remarque la différence grâce au logo et au nom de domaine.
 
-Une fois que l'utilisateur se connecte sur le serveur fake, l'e-mail et le mot de passe sont enregistrer dans une base de donner. En suite, l'utilisateur est redirigé sur le vrai site avec un message d'erreur.
+Une fois que l'utilisateur se connecte sur le serveur fake, l'e-mail et le mot de passe sont enregistrés dans une base de donnée. En suite, l'utilisateur est redirigé sur le vrai site avec un message d'erreur.
 
-Dans la meilleure optique le serveur fake devrais vérifier en même temps si l'e-mail et le mot de passe sont correcte sur le serveur original pour valider la connexion et envoyer un cookie à l'utilisateur cible pour éviter tous soupçon.
+Dans la meilleure optique le serveur fake devrais vérifier en même temps si l'e-mail et le mot de passe sont correcte sur le serveur original pour valider la connexion et envoyer un cookie à l'utilisateur cible pour éviter tout soupçon.
 
 [Serveur Original (Mastodon)](https://github.com/Bigeard/Man-in-the-Middle/tree/master/server-original-mastodon)   
 ![alt text](./IMG-README/mast1.png "Mastodon")
@@ -121,7 +121,7 @@ pip3 install pyqt5
 ## Configuration des DNS
 ------
 
-Il faut aller dans DNS Forwarder et Résolver DNS pour configurer le DNS en local.
+Il faut aller dans DNS Forwarder et Résolveur DNS pour configurer le DNS en local.
 ![alt text](./IMG-README/dns1.png "DNS1")  
 Pour ça, il faut ajouter des surcharges d'hôtes et entrer les informations suivantes  
 ![alt text](./IMG-README/dns2.png "DNS2")
@@ -137,18 +137,18 @@ HTTP packet manipulation
 
 - Il faut éviter de se connecter sur un réseau public si possible.
 
-- Il ne faut pas se connecter sur un site qui ne possède pas de certificat SSL. Car grâce à un sniffer, un haker peu voir l'identifiant et le mot de passe en claire ( identifiant: robin.bigeard@gmail.com / mot de passe: nuggets ).
+- Il ne faut pas se connecter sur un site qui ne possède pas de certificat SSL. Car grâce à un sniffer, un hacker peut voir l'identifiant et le mot de passe en claire ( identifiant: robin.bigeard@gmail.com / mot de passe: nuggets ).
 
 
 ![alt text](./IMG-README/term1.png "Terminal 1")
 
-- Il faut faire très attention au nom de domaine ou vous vous connectez, car il y a des possibilité que le site soit un site web fake.
+- Il faut faire très attention au nom de domaine ou vous vous connectez, car il y a des possibilité que le site soit un site web malicieux.
 
-- Si possible, il faut utiliser un gestionnaire de mot de passe comme Keepassxc.
+- Si possible, il faut utiliser un gestionnaire de mot de passe comme Keepassxc*.
 
-    Un gestionnaire de mot de passe permet de garder en mémoire des mots de passe dans une base de données cryptées. Il a pour but d'éviter les utilisateurs de mettre de mot de passe trop cohérent qui pourrait être référencé dans un dictionnaire de mot de passe.
+    Un gestionnaire de mot de passe permet de garder en mémoire des mots de passe dans une base de données cryptées. Il a pour but d'éviter aux utilisateurs d'utiliser des mots de passe trop simple, et qui pourraient être référencés dans un dictionnaire de mot de passe.
 
-    Mais le gestionnaire de mot de passe à une autre utiliser. Si on installe le module pour son navigateur le gestionnaire mot de passe à la possibilité de vérifier si le nom de domaine et le certificat SSL sont correcte et si ce n'est pas le cas de prévenir l'utilisateur.
+    Mais le gestionnaire de mot de passe à une autre utilité. Si on installe le module pour son navigateur le gestionnaire mot de passe à la possibilité de vérifier si le nom de domaine et le certificat SSL sont correcte et si ce n'est pas le cas de prévenir l'utilisateur.
 
 
-    Keepassxc est un gestionnaire de mot de passe gratuit et open source.
+    *Keepassxc est un gestionnaire de mot de passe gratuit et open source.
