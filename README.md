@@ -1,6 +1,4 @@
 # Man-in-the-Middle 
-<br>
-
 ## Groupe: 
 * Robin Bigeard
 * Samy Vera
