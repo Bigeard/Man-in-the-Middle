@@ -2,6 +2,7 @@ import sys
 import os
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit
 from mitm import *
+from sniff1 import *
 
 arp_poison = Arp_poison()
 
@@ -66,6 +67,11 @@ class Main(QWidget):
         startRedirectBtn.move(260,100)
         startRedirectBtn.resize(100,20)
         startRedirectBtn.clicked.connect(showParams)
+
+        printBtn = QPushButton('Sniff interface', self)
+        printBtn.move(140,140)
+        printBtn.resize(100,20)
+        printBtn.clicked.connect(launchSniff)
 
         exitBtn = QPushButton('Exit', self)
         exitBtn.move(20, 140)
