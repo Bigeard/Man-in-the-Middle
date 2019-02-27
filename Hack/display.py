@@ -32,12 +32,12 @@ class Main(QWidget):
         self.websiteIP = QLineEdit(self)
         self.websiteIP.move(20, 100)
         self.websiteIP.resize(100,20)
-        self.websiteIP.setPlaceholderText("Website IP")
+        self.websiteIP.setPlaceholderText("Original url")
 
         self.redirectIP = QLineEdit(self)
         self.redirectIP.move(140, 100)
         self.redirectIP.resize(100,20)
-        self.redirectIP.setPlaceholderText("Redirect IP")
+        self.redirectIP.setPlaceholderText("Fake url")
 
         def showParams():
             print(self.victimIP.text() + " " + self.gateIP.text() + " " + self.interface.text())
