@@ -2,9 +2,10 @@ import sys
 import os
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit
 from mitm import *
-from sniff1 import *
+from sniff import *
 
 arp_poison = Arp_poison()
+sniff_attack = Sniff_attack()
 
 class Main(QWidget):
     
@@ -48,6 +49,12 @@ class Main(QWidget):
             arp_poison.interface = self.interface.text()
             arp_poison.enablePoison()
 
+        def runSniff():
+            sniff_attack.trueurl = self.websiteIP.text()
+            sniff_attack.fakeurl = self.redirectIP.text()
+            sniff_attack.interface = self.interface.text()
+            sniff_attack.launchSniff()
+
         showParamsBtn = QPushButton('Show', self)
         showParamsBtn.move(380, 20)
         showParamsBtn.resize(50,20)
@@ -63,15 +70,10 @@ class Main(QWidget):
         stopPoisonBtn.resize(100,20)
         stopPoisonBtn.clicked.connect(arp_poison.disablePoison)
 
-        startRedirectBtn = QPushButton('StartRedirect', self)
-        startRedirectBtn.move(260,100)
-        startRedirectBtn.resize(100,20)
-        startRedirectBtn.clicked.connect(showParams)
-
         printBtn = QPushButton('Sniff interface', self)
-        printBtn.move(140,140)
+        printBtn.move(260,100)
         printBtn.resize(100,20)
-        printBtn.clicked.connect(launchSniff)
+        printBtn.clicked.connect(runSniff)
 
         exitBtn = QPushButton('Exit', self)
         exitBtn.move(20, 140)
