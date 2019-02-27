@@ -32,9 +32,7 @@ Pensez à exécuter le script en tant que super utilisateur.
 
 <br><br><br>
 
-------
 ## Installation d'un serveur Apache 2 / PHP / PhpMyAdmin
-------
 
 ```
 $ apt-get update
@@ -78,9 +76,7 @@ On utilisera du SFTP pour la connexion, il faudra donc penser à activer le SSH 
 
 <br><br><br>
 
-------
 ## Présentation des serveurs Original / Fake
-------
 
 Le serveur original est basique. Il y a une page de connexion et une page qui indique que la connexion est réussie.
 
@@ -99,9 +95,7 @@ Dans la meilleure optique le serveur fake devrais vérifier en même temps si l'
 
 <br><br><br>
 
-------
 ## Installation de Python 3.7 / Pip3 / Scapy / PyQt5
-------
 
 ### Installation de Python 3.7
 ```
@@ -129,9 +123,7 @@ pip3 install pyqt5
 
 <br><br><br>
 
-------
 ## Configuration des DNS
-------
 
 Il faut aller dans DNS Forwarder et Résolveur DNS pour configurer le DNS en local.
 ![alt text](./IMG-README/dns1.png "DNS1")  
@@ -139,9 +131,7 @@ Pour ça, il faut ajouter des surcharges d'hôtes et entrer les informations sui
 ![alt text](./IMG-README/dns2.png "DNS2")
 
 <br><br><br>
-------
 ## Fonctionnement de l'attaque
------
 Cette attaque est composée de 2 parties:
 * L'ARP Spoofing  
 * L'HTTP packet manipulation
@@ -165,10 +155,8 @@ Le sending est le fait d'envoyer des packets. Nous pouvons aussi bien forger des
 Nous pouvons voir que le packet est envoyé et contient bien l'url du faux site, ainsi qu'un HTTP 302 afin de faire une redirection.
 
 
-------
 ## Conclusion
 ### Comment éviter une attaque man in the middle ?
-------
 
 - Il faut éviter de se connecter sur un réseau public si possible.
 
