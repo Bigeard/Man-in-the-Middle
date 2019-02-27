@@ -4,6 +4,13 @@
 * Samy Vera
 * Matteo Lecuit
 
+Robin à travaillé sur la partie architecture, en se concentrant sur PFSense ainsi que les deux serveurs web, ainsi que sur la partie redirection du script.
+
+Samy à travaillé sur la partie scripting, notamment l'interface et l'ARP poisonning.
+
+Matteo à travaillé sur l'architecture, principalement la partie VM debian et PFsense, ansi que sur la partie sniffing et redirection du script.
+
+
 <br>
 
 ## Réseau
@@ -146,6 +153,11 @@ Le sniffing permet de réceptionner les différents packets passant sur une conn
 Grâce à cette étape, nous pouvons filtrer les différents packets, en fonction de leurs types (TCP, ICMP ...), des sources ou destinataires...
 Le sending est le fait d'envoyer des packets. Nous pouvons aussi bien forger des packets de A à Z, où bien réutiliser des données utiles, récupérées au préalable grâce au sniffing. Par exemple, en récupérant un HTTP get, nous pouvons altérer les adresses, ainsi que les différents flag du packet pour effectuer une redirection sur un site.
 
+![alt text](./IMG-README/wireshark.png "Packets sous Wireshark")  
+
+Nous pouvons voir que le packet est envoyé et contient bien l'url du faux site, ainsi qu'un HTTP 302 afin de faire une redirection.
+
+
 ------
 ## Conclusion
 ### Comment éviter une attaque man in the middle ?
@@ -172,4 +184,4 @@ Le sending est le fait d'envoyer des packets. Nous pouvons aussi bien forger des
 
 
     *Keepassxc est un gestionnaire de mot de passe gratuit et open source.
-    ![alt text](./IMG-README/keepassxc.png "keepassxc")
+    ![alt text](./IMG-README/keepassxc-mini.png "keepassxc")
