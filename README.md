@@ -154,6 +154,15 @@ Le sending est le fait d'envoyer des packets. Nous pouvons aussi bien forger des
 
 Nous pouvons voir que le packet est envoyé et contient bien l'url du faux site, ainsi qu'un HTTP 302 afin de faire une redirection.
 
+### Scripts
+
+La solution est composée de 3 scripts:
+* mitm.py, permettant de réaliser l'ARP Spoofing
+* sniff.py, réalisant le sniff ainsi que l'émission des requêtes HTTP
+* display.py, s'occupant de l'interface graphique, et exécutant les deux autres scripts en fonction des inputs
+
+Tout les packets récupérés sont ensuite écrits dans le fichier packets.txt
+
 
 ## Conclusion
 ### Comment éviter une attaque man in the middle ?
