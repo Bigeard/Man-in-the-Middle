@@ -10,6 +10,13 @@ Samy à travaillé sur la partie scripting, notamment l'interface et l'ARP poiso
 
 Matteo à travaillé sur l'architecture, principalement la partie VM debian et PFsense, ansi que sur la partie sniffing et redirection du script.
 
+## Procédure de test:
+
+```
+$ cd script
+# python3 display.py
+```
+Pensez à exécuter le script en tant que super utilisateur.
 
 <br>
 
