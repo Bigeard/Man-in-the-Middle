@@ -154,11 +154,15 @@ Le sending est le fait d'envoyer des packets. Nous pouvons aussi bien forger des
 - Il faut éviter de se connecter sur un réseau public si possible.
 
 - Il ne faut pas se connecter sur un site qui ne possède pas de certificat SSL. Car grâce à un sniffer, un hacker peut voir l'identifiant et le mot de passe en claire ( identifiant: robin.bigeard@gmail.com / mot de passe: nuggets ).
-
-
 ![alt text](./IMG-README/term1.png "Terminal 1")
 
 - Il faut faire très attention au nom de domaine ou vous vous connectez, car il y a des possibilité que le site soit un site web malicieux.
+![alt text](./IMG-README/dom1.png "mastodon")  
+![alt text](./IMG-README/dom2.png "mastoodon")
+
+- Il faudrait utiliser un VPN ( un réseau privé virtuel ) pour naviguer sur internet en tout sécurité. Un VPN isole le trafic entre l'ordinateur et le serveur VPN qui redirige sur internet.
+![alt text](./IMG-README/vpn.png "VPN")
+
 
 - Si possible, il faut utiliser un gestionnaire de mot de passe comme Keepassxc*.
 
@@ -168,3 +172,4 @@ Le sending est le fait d'envoyer des packets. Nous pouvons aussi bien forger des
 
 
     *Keepassxc est un gestionnaire de mot de passe gratuit et open source.
+    ![alt text](./IMG-README/keepassxc.png "keepassxc")
